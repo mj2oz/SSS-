@@ -1,0 +1,137 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin-top: 0;
+}
+
+header h2 {
+    margin-bottom: 10px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+header nav a:hover {
+    background-color: #0056b3;
+}
+
+/* Main Content Styles */
+main {
+    flex: 1; /* Allows main to take up remaining space */
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f5f5f5;
+}
+
+/* Form Styles */
+form {
+    margin-top: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    margin-bottom: 10px; 
+}
+
+form button {
+    background-color: #007bff; 
+    color: #fff; 
+    border: none; 
+    padding: 8px 16px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+form button:hover { 
+   background-color: #0056b3; 
+}
+
+/* Additional Content Styles */
+.welcome-message {
+   text-align:center; 
+   margin-top :20 px ; 
+}
+
+.info-cards {
+   display:grid; 
+   grid-template-columns :repeat(auto-fit,minmax(250 px,1fr)); 
+   gap :20 px ; 
+   margin-top :20 px ; 
+}
+
+.card {
+   background-color:#e9ecef; 
+   padding :15 px ; 
+   border-radius :8 px ; 
+   box-shadow :0 px ,2 px ,4 px ,rgba(0,0,0,.1); 
+   text-align:center ; 
+}
+

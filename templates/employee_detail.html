@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/employee.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="employee-details">
+            <img src="{{ employee.photo_url if employee.photo_url else 'path/to/default-image.jpg' }}" alt="Employee Photo">
+            <div class="employee-info">
+                <h2>{{ employee.FirstName if employee.FirstName else 'N/A' }} {{ employee.LastName if employee.LastName else 'N/A' }}</h2>
+                <p><strong>JobTitle: </strong>{{ employee.JobTitle if employee.JobTitle else 'N/A' }}</p>
+                <p><strong>Department:</strong>{{ employee.Department if employee.Department else 'N/A' }}</p>
+            </div>
+       </div>
+
+        <div class="section">
+            <h3>Contact Information</h3>
+            <ul>
+                <li><strong>Email:</strong> {{ employee.Email if employee.Email else 'N/A' }}</li>
+                <li><strong>Phone:</strong> {{ employee.Phone if employee.Phone else 'N/A' }}</li>
+                <li><strong>Address:</strong> {{ employee.Address if employee.Address else 'N/A' }}</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>Personal Details</h3>
+            <ul>
+                <li><strong>Date of Birth:</strong> {{ employee.DOB if employee.DOB else 'N/A' }}</li>
+                <li><strong>Gender:</strong> {{ employee.Gender if employee.Gender else 'N/A' }}</li>
+                <li><strong>Date of Hire:</strong> {{ employee.DateOfHire if employee.DateOfHire else 'N/A' }}</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>Education</h3>
+            <ul>
+                <li><strong>Degree:</strong> {{ employee.Education.Degree if employee.Education and employee.Education.Degree else 'N/A' }}</li>
+                <li><strong>Institution:</strong> {{ employee.Education.Institution if employee.Education and employee.Education.Institution else 'N/A' }}</li>
+                <li><strong>Graduation Date:</strong> {{ employee.Education.GraduationDate if employee.Education and employee.Education.GraduationDate else 'N/A' }}</li>
+            </ul>
+        </div>
+
+        <!-- Add more sections for other employee details -->
+    </div>
+</body>
+</html>
+

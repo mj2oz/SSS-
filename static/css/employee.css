@@ -1,0 +1,100 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8; /* Light background for contrast */
+}
+
+/* Container Styles */
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: #ffffff; /* White background for content */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+    padding: 30px;
+    transition: transform 0.3s; /* Smooth hover effect */
+}
+
+.container:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+/* Employee Details Styles */
+.employee-details {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.employee-details img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-right: 30px;
+    border: 4px solid #007bff; /* Blue border around the image */
+}
+
+.employee-info h2 {
+    font-size: 28px; /* Larger font size for name */
+    margin-bottom: 10px;
+    color: #007bff; /* Primary color for headings */
+}
+
+.employee-info p {
+    margin: 5px 0;
+    color: #555; /* Dark grey for text */
+}
+
+/* Section Styles */
+.section {
+    margin-bottom: 30px;
+}
+
+.section h3 {
+    font-size: 22px; /* Slightly larger section titles */
+    color: #333; /* Darker color for section titles */
+    margin-bottom: 15px;
+    border-bottom: 2px solid #007bff; /* Underline effect for section titles */
+    padding-bottom: 5px; /* Space below the title */
+}
+
+.section ul {
+    list-style-type: none; /* Remove default list styling */
+    padding-left: 0; /* Remove padding from left */
+}
+
+.section li {
+    margin-bottom: 15px; /* Increased space between list items */
+    color: #555; /* Dark grey for text */
+}
+
+.section li strong {
+    color: #333; /* Darker color for labels */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .employee-details {
+        flex-direction: column; /* Stack elements on smaller screens */
+        align-items: flex-start; /* Align items to the start */
+        text-align: center; /* Center text on small devices */
+    }
+
+    .employee-details img {
+        margin-bottom: 15px; /* Space below image when stacked */
+        margin-right: 0; /* Remove right margin when stacked */
+        width: 100px; 
+        height: 100px; 
+    }
+
+    .employee-info h2 {
+        font-size: 24px; /* Adjust font size for smaller screens */
+    }
+
+    .section h3 {
+        font-size: 20px; /* Adjust section title size for smaller screens */
+    }
+}
+

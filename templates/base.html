@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFSB HR Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+</head>
+<body>
+    <header>
+    <h1>IFSB HR Portal</h1>
+    <h2>Welcome to the IFSB HR Portal</h2>
+    <p>Select an option from the menu to get started.</p>
+        <nav>
+            <a href="employees">Manage Employees</a>
+            <a href="attendance">Attendance Tracking</a>
+            <a href="Payroll">Payroll Management</a>
+            <a href="Automate">Automated Tasks</a>
+        </nav>
+    </header>
+
+<img src="{{ url_for('static', filename='images/Hmm.jpeg') }}" alt="Description of the image" style="max-width: 100%; height: auto;">
+
+</body>
+</html>
