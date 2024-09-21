@@ -4,15 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Employee</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add_emp.css') }}">
 </head>
 <body>
-    <h1>Add Employee</h1>
-    <form method="post">
-        <label for="FirstName">First Name:</label>
-        <input type="text" id="FirstName" name="FirstName" required><br>
-        <label for="LastName">Last Name:</label>
-        <input type="text" id="LastName" name="LastName" required><br>
-        <button type="submit">Add</button>
-    </form>
+    <div class="form-container">
+        <h1>Add Employee</h1>
+        <form method="post">
+            <h2>Personal Details</h2>
+            <label for="FirstName">First Name:</label>
+            <input type="text" id="FirstName" name="FirstName" required><br>
+
+            <label for="LastName">Last Name:</label>
+            <input type="text" id="LastName" name="LastName" required><br>
+
+            <label for="DOB">Date of Birth:</label>
+            <input type="date" id="DOB" name="DOB"><br>
+
+            <label for="Address">Address:</label>
+            <input type="text" id="Address" name="Address"><br>
+
+            <label for="Phone">Phone:</label>
+            <input type="text" id="Phone" name="Phone"><br>
+
+            <label for="Email">Email:</label>
+            <input type="email" id="Email" name="Email"><br>
+
+            <label for="Gender">Gender:</label>
+            <select id="Gender" name="Gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select><br>
+
+            <label for="DateOfHire">Date of Hire:</label>
+            <input type="date" id="DateOfHire" name="DateOfHire"><br>
+
+            <h2>Assignment Details</h2>
+            <label for="JobTitle">Job Title:</label>
+            <input type="text" id="JobTitle" name="JobTitle"><br>
+
+            <label for="Department">Department:</label>
+            <input type="text" id="Department" name="Department"><br>
+
+            <h2>Education Details</h2>
+            <label for="Degree">Degree:</label>
+            <input type="text" id="Degree" name="Degree"><br>
+
+            <label for="Institution">Institution:</label>
+            <input type="text" id="Institution" name="Institution"><br>
+
+            <label for="GraduationDate">Graduation Date:</label>
+            <input type="date" id="GraduationDate" name="GraduationDate"><br>
+
+            <button type="submit">Add</button>
+        </form>
+    </div>
 </body>
 </html>

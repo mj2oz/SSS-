@@ -9,11 +9,11 @@
 <body>
     <div class="container">
         <div class="employee-details">
-            <img src="{{ employee.photo_url if employee.photo_url else 'path/to/default-image.jpg' }}" alt="Employee Photo">
+            <img src="{{ url_for('static', filename='images/zombar.jpeg') }}" alt="Employee Photo">
             <div class="employee-info">
                 <h2>{{ employee.FirstName if employee.FirstName else 'N/A' }} {{ employee.LastName if employee.LastName else 'N/A' }}</h2>
-                <p><strong>JobTitle: </strong>{{ employee.JobTitle if employee.JobTitle else 'N/A' }}</p>
-                <p><strong>Department:</strong>{{ employee.Department if employee.Department else 'N/A' }}</p>
+                <p><strong>JobTitle: </strong>{{ employee.assignment.JobTitle if employee.assignment.JobTitle else 'N/A' }}</p>
+                <p><strong>Department: </strong>{{ employee.assignment.Department if employee.assignment.Department else 'N/A' }}</p>
             </div>
        </div>
 
@@ -38,14 +38,16 @@
         <div class="section">
             <h3>Education</h3>
             <ul>
-                <li><strong>Degree:</strong> {{ employee.Education.Degree if employee.Education and employee.Education.Degree else 'N/A' }}</li>
-                <li><strong>Institution:</strong> {{ employee.Education.Institution if employee.Education and employee.Education.Institution else 'N/A' }}</li>
-                <li><strong>Graduation Date:</strong> {{ employee.Education.GraduationDate if employee.Education and employee.Education.GraduationDate else 'N/A' }}</li>
+                <li><strong>Degree:</strong> {{ employee.education.Degree if employee.education and employee.education.Degree else 'N/A' }}</li>
+                <li><strong>Institution:</strong> {{ employee.education.Institution if employee.education and employee.education.Institution else 'N/A' }}</li>
+                <li><strong>Graduation Date:</strong> {{ employee.education.GraduationDate if employee.education and employee.education.GraduationDate else 'N/A' }}</li>
             </ul>
         </div>
 
-        <!-- Add more sections for other employee details -->
+        <!-- Delete Employee Button -->
+        <form action="" method="post">
+            <button type="submit" class="delete-button">Delete Employee</button>
+        </form>
     </div>
 </body>
 </html>
-

@@ -98,3 +98,16 @@ body {
     }
 }
 
+.delete-button {
+    background-color: #ff4d4d; /* Red background for delete button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #ff1a1a; /* Darker red on hover */
+}
