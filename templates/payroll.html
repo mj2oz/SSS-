@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll Tracking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/payroll.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Payroll Tracking</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Name</th>
+                    <th>Basic Salary</th>
+                    <th>Total Salary</th>
+                    <th>Bonus</th>
+                    <th>Deductions</th>
+                    <th>Payroll ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for employee in payroll_data %}
+                <tr>
+                    <td><a href="{{ url_for('edit_payroll', employee_id=employee.EmployeeID) }}">{{ employee.EmployeeID }}</a></td>
+                    <td>{{ employee.FirstName }} {{ employee.LastName }}</td>
+                    <td>${{ employee.payroll.BasicSalary }}</td>
+                    <td>${{ employee.payroll.TotalSalary }}</td>
+                    <td>{{ employee.payroll.Bonus }}</td>
+                    <td>${{ employee.payroll.Deductions }}</td>
+                    <td>{{ employee.payroll.PayrollID }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
