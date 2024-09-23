@@ -1,9 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from datetime import datetime
+from datetime import datetime, date, timedelta
 from sqlalchemy.orm import joinedload  
 from models import *
-
-
 
 #Just connecting to the DB
 app = Flask(__name__)
@@ -15,8 +13,7 @@ db.init_app(app)
 #Main route
 @app.route("/")
 def base():
-    employee_1 = Employee.query.get(10004)
-    print(employee_1.assignment.JobTitle)
+
     return render_template("base.html")
 
 #This was one hell of a searching algorthim (and it doesnt even work properly)
@@ -84,7 +81,7 @@ def add_employee():
         db.session.commit()
         
         flash('Employee added successfully!', 'success')
-        return redirect(url_for('index'))
+        return redirect(url_for('base'))
     
     return render_template('add_employee.html')
 
@@ -117,14 +114,50 @@ def edit_payroll(employee_id):
             employee.payroll = Payroll()
         #Update payroll details
         employee.payroll.BasicSalary = request.form['BasicSalary']
-        employee.payroll.TotalSalary = request.form['TotalSalary']
         employee.payroll.Deductions = request.form['Deductions']
         employee.payroll.Bonus = request.form['Bonus']
+        employee.payroll.TotalSalary = float(employee.payroll.BasicSalary) + float(employee.payroll.Bonus) - float(employee.payroll.Deductions)
         db.session.commit()
         flash('Payroll updated successfully!', 'success')
         return redirect(url_for('payroll'))
     
     return render_template('edit_payroll.html', employee=employee)
+
+@app.route('/attendance_tracking', methods=['GET', 'POST'])
+def attendance_tracking():
+    if request.method == 'POST':
+        attendance_date = datetime.strptime(request.form['date'], '%Y-%m-%d').date()
+        for key, value in request.form.items():
+            if key != 'date':
+                employee_id = int(key)
+                attendance_record = Attendance.query.filter_by(AttendanceDate=attendance_date).first()
+
+                if not attendance_record:
+                    attendance_record = Attendance(EmployeeID=employee_id, AttendanceDate=attendance_date)
+
+                attendance_record.Status = 'Present' if value == 'on' else 'Absent'
+                db.session.add(attendance_record)
+        db.session.commit()
+        flash('Attendance updated successfully!', 'success')
+        return redirect(url_for('attendance_tracking'))
+
+    employees = Employee.query.all()
+    return render_template('attendance_tracking.html', employees=employees)
+
+@app.route('/automate_tasks')
+def automate_tasks():
+    # Find training sessions happening in the next week
+    upcoming_trainings = Training.query.filter(
+        Training.TrainingDate >= date.today(),
+        Training.TrainingDate <= date.today() + timedelta(days=7)
+    ).all()
+
+    # Flash reminders for each training
+    for training in upcoming_trainings:
+        employee = training.employee
+        flash(f'Reminder: {employee.FirstName} {employee.LastName} has training "{training.TrainingName}" on {training.TrainingDate}.', 'info')
+
+    return render_template('automate_tasks.html')
 
 
 #Just a test route, don't mind it ;)

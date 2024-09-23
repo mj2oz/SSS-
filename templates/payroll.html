@@ -15,9 +15,9 @@
                     <th>Employee ID</th>
                     <th>Name</th>
                     <th>Basic Salary</th>
-                    <th>Total Salary</th>
                     <th>Bonus</th>
                     <th>Deductions</th>
+                    <th>TotalSalary</th>
                     <th>Payroll ID</th>
                 </tr>
             </thead>
@@ -27,14 +27,20 @@
                     <td><a href="{{ url_for('edit_payroll', employee_id=employee.EmployeeID) }}">{{ employee.EmployeeID }}</a></td>
                     <td>{{ employee.FirstName }} {{ employee.LastName }}</td>
                     <td>${{ employee.payroll.BasicSalary }}</td>
+                    <td>${{ employee.payroll.Bonus }}</td>
+                    <td>{{ employee.payroll.Deductions }}</td>
                     <td>${{ employee.payroll.TotalSalary }}</td>
-                    <td>{{ employee.payroll.Bonus }}</td>
-                    <td>${{ employee.payroll.Deductions }}</td>
                     <td>{{ employee.payroll.PayrollID }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+<a href="/">
+    <button style="background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+        Go to Main Page
+    </button>
+</a>
+
     </div>
 </body>
 </html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Tracking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/attendance.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Attendance Tracking</h1>
+        <form method="post">
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date" required>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for employee in employees %}
+                    <tr>
+                        <td>{{ employee.EmployeeID }}</td>
+                        <td>{{ employee.FirstName }} {{ employee.LastName }}</td>
+                        <td>
+                            {% set attendance_record = employee.attendance if employee.attendance and employee.attendance.AttendanceDate == request.form.get('date') else None %}
+                            <input type="checkbox" name="{{ employee.EmployeeID }}" {% if attendance_record and attendance_record.Status == 'Present' %}checked{% endif %}>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button type="submit">Save Attendance</button>
+        </form>
+    </div>
+</body>
+</html>
