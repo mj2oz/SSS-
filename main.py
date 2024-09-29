@@ -133,7 +133,7 @@ def attendance_tracking():
                 attendance_record = Attendance.query.filter_by(AttendanceDate=attendance_date).first()
 
                 if not attendance_record:
-                    attendance_record = Attendance(EmployeeID=employee_id, AttendanceDate=attendance_date)
+                    attendance_record = Attendance(AttendanceDate=attendance_date)
 
                 attendance_record.Status = 'Present' if value == 'on' else 'Absent'
                 db.session.add(attendance_record)
@@ -158,6 +158,13 @@ def automate_tasks():
         flash(f'Reminder: {employee.FirstName} {employee.LastName} has training "{training.TrainingName}" on {training.TrainingDate}.', 'info')
 
     return render_template('automate_tasks.html')
+
+
+@app.route('/reports', methods=['GET'])
+def reports():
+    kpi_data = EmployeeKPIView.query.all()
+    health_benefits_data = EmployeeHealthBenefits.query.all()
+    return render_template('reports.html', kpi_data=kpi_data, health_benefits_data=health_benefits_data)
 
 
 #Just a test route, don't mind it ;)

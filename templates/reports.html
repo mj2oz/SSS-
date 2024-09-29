@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Reports</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reports.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employee KPI Report</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>KPI ID</th>
+                <th>KPI Name</th>
+                <th>Description</th>
+                <th>Target Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for kpi in kpi_data %}
+            <tr>
+                <td>{{ kpi.EmployeeID }}</td>
+                <td>{{ kpi.EmployeeName }}</td>
+                <td>{{ kpi.KPIID }}</td>
+                <td>{{ kpi.KPIName }}</td>
+                <td>{{ kpi.Description }}</td>
+                <td>{{ kpi.TargetValue }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h1>Employee Health Benefits</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Health ID</th>
+                <th>Medical Leave</th>
+                <th>Hospitalization Claims</th>
+                <th>Group Insurance ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for health in health_benefits_data %}
+            <tr>
+                <td>{{ health.EmployeeID }}</td>
+                <td>{{ health.FirstName }}</td>
+                <td>{{ health.LastName }}</td>
+                <td>{{ health.HealthID }}</td>
+                <td>{{ health.MedicalLeave }}</td>
+                <td>{{ health.HospitalizationClaims }}</td>
+                <td>{{ health.GroupInsuranceID }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

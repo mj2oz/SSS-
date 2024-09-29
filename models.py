@@ -67,6 +67,25 @@ class Performance(db.Model):
     ReviewDate = db.Column(db.Date)
     employee = db.relationship('Employee', back_populates='performance')
 
+class EmployeeKPIView(db.Model):
+    __tablename__ = 'EmployeeKPIView'
+    EmployeeID = db.Column(db.Integer, primary_key=True)
+    EmployeeName = db.Column(db.String)
+    KPIID = db.Column(db.Integer)
+    KPIName = db.Column(db.String)
+    Description = db.Column(db.String)
+    TargetValue = db.Column(db.Integer)
+
+class EmployeeHealthBenefits(db.Model):
+    __tablename__ = 'EmployeeHealthBenefits'
+    EmployeeID = db.Column(db.Integer, primary_key=True)
+    FirstName = db.Column(db.String)
+    LastName = db.Column(db.String)
+    HealthID = db.Column(db.Integer)
+    MedicalLeave = db.Column(db.Integer)
+    HospitalizationClaims = db.Column(db.Integer)
+    GroupInsuranceID = db.Column(db.Integer)
+
 class Employee(db.Model):
     __tablename__ = 'Employee'
     EmployeeID = db.Column(db.Integer, primary_key=True)

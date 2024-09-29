@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <div class="employee-details">
-            <img src="{{ url_for('static', filename='images/zombar.jpeg') }}" alt="Employee Photo">
+            <img src="{{ url_for('static', filename='images/emp.png') }}" alt="Employee Photo">
             <div class="employee-info">
                 <h2>{{ employee.FirstName if employee.FirstName else 'N/A' }} {{ employee.LastName if employee.LastName else 'N/A' }}</h2>
                 <p><strong>JobTitle: </strong>{{ employee.assignment.JobTitle if employee.assignment.JobTitle else 'N/A' }}</p>
