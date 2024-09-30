@@ -27,6 +27,12 @@
         th {
             background-color: #f2f2f2;
         }
+        
+        @media print {
+            #printBtn {
+                display: none; /* Hide the button when printing */
+            }
+        }
     </style>
 </head>
 <body>
@@ -61,8 +67,7 @@
         <thead>
             <tr>
                 <th>Employee ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Employee Name</th>
                 <th>Health ID</th>
                 <th>Medical Leave</th>
                 <th>Hospitalization Claims</th>
@@ -73,8 +78,7 @@
             {% for health in health_benefits_data %}
             <tr>
                 <td>{{ health.EmployeeID }}</td>
-                <td>{{ health.FirstName }}</td>
-                <td>{{ health.LastName }}</td>
+                <td>{{ health.FirstName }} {{ health.LastName}}</td>
                 <td>{{ health.HealthID }}</td>
                 <td>{{ health.MedicalLeave }}</td>
                 <td>{{ health.HospitalizationClaims }}</td>
@@ -83,5 +87,7 @@
             {% endfor %}
         </tbody>
     </table>
+    <button id="printBtn" onclick="window.print()">Print Report</button>
+
 </body>
 </html>

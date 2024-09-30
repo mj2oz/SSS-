@@ -1,22 +1,29 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from datetime import datetime, date, timedelta
 from sqlalchemy.orm import joinedload  
+import os
 from models import *
+from dotenv import load_dotenv
 
-#Just connecting to the DB
+# Load environment variables from .env file
+load_dotenv()
+
 app = Flask(__name__)
+
+#Configure the database connection
+app.config['SQLALCHEMY_DATABASE_URI'] = (
+    f"mysql+pymysql://{os.getenv('DB_USERNAME')}:{os.getenv('DB_PASSWORD')}"
+    f"@{os.getenv('DB_HOST')}/{os.getenv('DB_NAME')}"
+)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://mj:1@127.0.0.1:3306/ifsb'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
 #Main route
 @app.route("/")
 def base():
-
     return render_template("base.html")
 
-#This was one hell of a searching algorthim (and it doesnt even work properly)
 @app.route('/employees', methods=['GET', 'POST'])
 def employees():
     query = request.form.get('query')
