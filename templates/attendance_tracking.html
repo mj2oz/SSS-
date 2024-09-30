@@ -8,33 +8,25 @@
 </head>
 <body>
     <div class="container">
-        <h1>Attendance Tracking</h1>
-        <form method="post">
-            <label for="date">Select Date:</label>
-            <input type="date" id="date" name="date" required>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Employee ID</th>
-                        <th>Name</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for employee in employees %}
-                    <tr>
-                        <td>{{ employee.EmployeeID }}</td>
-                        <td>{{ employee.FirstName }} {{ employee.LastName }}</td>
-                        <td>
-                            {% set attendance_record = employee.attendance if employee.attendance and employee.attendance.AttendanceDate == request.form.get('date') else None %}
-                            <input type="checkbox" name="{{ employee.EmployeeID }}" {% if attendance_record and attendance_record.Status == 'Present' %}checked{% endif %}>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <button type="submit">Save Attendance</button>
-        </form>
+        <h1>Attendance Records</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Attendance ID</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in attendance_records %}
+                <tr>
+                    <td>{{ record.AttendanceID }}</td>
+                    <td>{{ record.AttendanceDate.strftime('%Y-%m-%d') }}</td>
+                    <td>{{ record.Status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
