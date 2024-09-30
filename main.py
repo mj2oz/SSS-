@@ -130,28 +130,6 @@ def edit_payroll(employee_id):
     
     return render_template('edit_payroll.html', employee=employee)
 
-# @app.route('/attendance_tracking', methods=['GET', 'POST'])
-# def attendance_tracking():
-#     if request.method == 'POST':
-#         attendance_date = datetime.strptime(request.form['date'], '%Y-%m-%d').date()
-#         for key, value in request.form.items():
-#             if key != 'date':
-#                 employee_id = int(key)
-#                 attendance_record = Attendance.query.filter_by(AttendanceDate=attendance_date).first()
-
-#                 if not attendance_record:
-#                     attendance_record = Attendance(AttendanceDate=attendance_date)
-
-#                 attendance_record.Status = 'Present' if value == 'on' else 'Absent'
-#                 db.session.add(attendance_record)
-#         db.session.commit()
-#         flash('Attendance updated successfully!', 'success')
-#         return redirect(url_for('attendance_tracking'))
-
-#     employees = Employee.query.all()
-#     return render_template('attendance_tracking.html', employees=employees)
-
-
 @app.route('/attendance_tracking', methods=['GET'])
 def attendance_tracking():
     attendance_records = Attendance.query.all()
